@@ -43,8 +43,24 @@ function main() {
     // add the cube to the scene and render the scene and camera
     scene.add(cube);
 
-    renderer.render(scene, camera);
+    // when you add animation this moves to the animation
+    // renderer.render(scene, camera);
+
+    // and here's the animation!!! :-D
+    function render(time) {
+        time *= 0.001;  // convert time to seconds
+       
+        cube.rotation.x = time;
+        cube.rotation.y = time;
+       
+        renderer.render(scene, camera);
+       
+        requestAnimationFrame(render);
+      }
+      requestAnimationFrame(render);
 
 };
+
+
 
 main();
