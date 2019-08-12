@@ -17,6 +17,15 @@ function main() {
 
     var scene = new THREE.Scene();
 
+    // here's the lighting! this makes each side of the cube a slightly different shade
+    {
+        const color = 0xFFFFFF;
+        const intensity = 1;
+        const light = new THREE.DirectionalLight(color, intensity);
+        light.position.set(-1, 2, 4);
+        scene.add(light);
+      }
+
     const fov = 75; // the angle from the eye to the object (in degrees) 
     const aspect = 2;  // the canvas default - size of the display/ratio of the display
     const near = 0.1; // the distance from the front of the camera where the rendering will start
@@ -29,13 +38,15 @@ function main() {
     // the aspect calculates the width of the object based on the fov degrees from the origin - starts at the origin and goes outwards like a triangle
 
     // size and dimensions of the object
-    const boxWidth = 2;
+    const boxWidth = 1;
     const boxHeight = 1;
     const boxDepth = 1;
     const geometry = new THREE.BoxGeometry(boxWidth, boxHeight, boxDepth);
 
     // color and material of the object - color hexcode starts with 0x
-    const material = new THREE.MeshBasicMaterial({color: 0xee82ee});
+    // const material = new THREE.MeshBasicMaterial({color: 0xee82ee});
+    // the MeshBasicMaterial doesnt work with light so use:
+    const material = new THREE.MeshPhongMaterial({color: 0xee82ee});  
 
     // puts the size and color together
     const cube = new THREE.Mesh(geometry, material);
@@ -53,8 +64,10 @@ function main() {
         cube.rotation.x = time;
         cube.rotation.y = time;
        
+        // this is three.js' function that draws the object
         renderer.render(scene, camera);
        
+        // 
         requestAnimationFrame(render);
       }
       requestAnimationFrame(render);
