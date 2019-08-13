@@ -54,6 +54,8 @@ function main() {
         // puts the size and color together
         const cube = new THREE.Mesh(geometry, material);
 
+        // change the background color
+        scene.background = new THREE.Color(0xAAAAAA);
         // add the cube to the scene and render the scene and camera
         scene.add(cube);
        
