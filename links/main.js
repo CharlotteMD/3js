@@ -62,9 +62,13 @@ function main() {
   }
 
   const cubes = [
+    makeInstance(geometry, 0x80ff00, -3),
     makeInstance(geometry, 0x8844aa, -2),
+    makeInstance(geometry, 0x00bbff, -1),
     makeInstance(geometry, 0xee82ee, 0),
-    makeInstance(geometry, 0x80ff00, 2)
+    makeInstance(geometry, 0x00bbff, 1),
+    makeInstance(geometry, 0x80ff00, 2),
+    makeInstance(geometry, 0x8844aa, 3)
   ];
 
   // and here's the animation!!! :-D
